@@ -1,13 +1,25 @@
 package com.ias.response;
 
+/**
+ * Clase generica para manejar una respuesta estandar en todas las peticiones Rest
+ * 
+ * @author Paul Arenas
+ *
+ */
 public class Response<T> {
-	private T results;
+	private T data;
+	private Integer code;
 
-	public Response(T results) {
-		this.results = results;
+	public Response(T data, Integer code) {
+		this.data = data;
+		this.code = code;
 	}
 
-	public T getResults() {
-		return this.results;
+	public T getData() {
+		return this.data;
+	}
+	
+	public Integer getCode() {
+		return this.code;
 	}
 }

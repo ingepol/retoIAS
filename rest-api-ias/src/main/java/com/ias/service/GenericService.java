@@ -7,6 +7,13 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.ias.service.exception.GenericServiceException;
 
+/**
+ * Servicio generico que expone los servicios comunes y solicita la implementación
+ * de otros métodos en especifico 
+ * 
+ * @author Paul Arenas
+ *
+ */
 public interface GenericService<T, ID extends Serializable> {
 	
 	public default Iterable<T> findAll() {
