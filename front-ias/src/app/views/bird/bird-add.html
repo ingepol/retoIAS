@@ -1,0 +1,27 @@
+<h3>{{titulo}}</h3>
+<hr/>
+
+<form #formBird="ngForm" (ngSubmit)="onSubmit()" class="col-lg-6" id="form-bird">
+
+    <label for="">Nombre común
+        <span *ngIf="!commonName.valid && commonName.touched" class="label label-danger">El nombre es obligatorio</span>
+    </label>
+    
+    <input type="text" #commonName="ngModel" name="commonName" [(ngModel)]="bird.commonName" class="form-control" required>
+    
+    <label for="">Nombre científico:</label>
+    <input type="text" #scientificName="ngModel" name="scientificName" [(ngModel)]="bird.scientificName" class="form-control">
+
+
+    <label for="">País:
+        <span *ngIf="!country.valid && country.touched" class="label label-danger">El país es obligatorio</span>
+    </label>
+
+    <select multiple [compareWith]="inSelectedCountries" class='select-option' required #country="ngModel" name="country" [(ngModel)]='bird.countries' class="form-control">
+        <option  class='option' *ngFor='let country of countries' [value]="country">{{country.name}}</option>
+    </select>
+
+    <br>
+    <input id="saveBird" type="submit" value="Guardar" [disabled]="!formBird.form.valid" class="btn btn-success">
+
+</form>

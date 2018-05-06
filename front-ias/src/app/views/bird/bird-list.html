@@ -1,0 +1,32 @@
+<h3>{{titulo}}</h3>
+<hr/>
+
+<div *ngIf="!birds">    
+    Cargando listado de aves....
+</div>
+
+<div *ngIf="birds">
+    <table>
+        <thead>
+            <tr>
+                <th width="5%">#</th>
+                <th width="35%">Nombre común</th>
+                <th width="45%">Nombre científico</th>
+                <th width="15%">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let bird of birds; let idx = index">
+                <td align="center">{{idx + 1}}</td>
+                <td>{{bird.commonName}}</td>
+                <td>{{bird.scientificName}}</td>
+                <td align="center">
+                    <p>
+                            <a id="editBird" [routerLink]="['/edit-bird',bird.code]" class="btn btn-sm btn-warning">Editar</a>
+                            <a id="deleteBird" (click)="deleteBird(bird.code)"  class="btn btn-sm btn-danger">Borrar</a>
+                        </p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
