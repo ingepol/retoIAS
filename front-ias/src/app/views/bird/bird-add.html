@@ -7,10 +7,10 @@
         <span *ngIf="!commonName.valid && commonName.touched" class="label label-danger">El nombre es obligatorio</span>
     </label>
     
-    <input type="text" #commonName="ngModel" name="commonName" [(ngModel)]="bird.commonName" class="form-control" required>
+    <input type="text" maxlength="100" #commonName="ngModel" name="commonName" [(ngModel)]="bird.commonName" class="form-control" required>
     
     <label for="">Nombre científico:</label>
-    <input type="text" #scientificName="ngModel" name="scientificName" [(ngModel)]="bird.scientificName" class="form-control">
+    <input type="text" maxlength="200" #scientificName="ngModel" name="scientificName" [(ngModel)]="bird.scientificName" class="form-control">
 
 
     <label for="">País:
