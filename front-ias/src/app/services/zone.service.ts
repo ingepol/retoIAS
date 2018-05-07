@@ -5,7 +5,7 @@ import { map } from 'rxjs/operators';
 import { GLOBAL } from './global';
 
 @Injectable()
-export class CountryService{
+export class ZoneService{
     public url:string;
 
     constructor(
@@ -14,8 +14,8 @@ export class CountryService{
         this.url = GLOBAL.url;
     }
 
-    getCountries(){
-        return this._http.get(this.url+'countries')
+    getZones(){
+        return this._http.get(this.url+'zones')
             .pipe(map(res => res.json()));
     }
 

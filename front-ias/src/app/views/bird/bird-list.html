@@ -1,4 +1,23 @@
 <h3>{{titulo}}</h3>
+
+<div class="row">
+    <div>
+    
+            <div class="col-lg-3">
+                <select class='select-option' (change)="searchBirds()" required #zone="ngModel" name="zone" [(ngModel)]='zoneFilter' class="form-control">   
+                    <option  class='option' *ngFor='let zone of zones' [value]="zone.code">{{zone.name}}</option>
+                </select>
+            </div>
+            <div class="col-lg-3">
+                <input type="text" (keydown.enter)="searchBirds()" name="nameFilter" [(ngModel)]="nameFilter" class="form-control" placeholder="Nombre común o científico del ave">
+            </div>
+            <div>
+                
+                <a id="searchBirds" (click)="searchBirds()"  class="btn btn-success">Buscar</a>
+            </div>
+
+    </div>
+</div>
 <hr/>
 
 <div *ngIf="!birds">    

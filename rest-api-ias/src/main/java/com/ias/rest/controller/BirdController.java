@@ -41,6 +41,16 @@ public class BirdController {
   public ResponseEntity<Response<Iterable<Bird>>> findAll() {
     return ResponseEntity.ok(new Response<>(birdService.findAll(), 200));
   }
+  
+  @GetMapping(value = "/search/{zoneCode}", produces = MediaType.APPLICATION_JSON_VALUE)
+  public ResponseEntity<Response<Iterable<Bird>>> findBirds(@PathVariable("zoneCode") Long zoneCode) {
+    return ResponseEntity.ok(new Response<>(birdService.findByZone(zoneCode), 200));
+  }
+  
+  @GetMapping(value = "/search/{zoneCode}/{name}", produces = MediaType.APPLICATION_JSON_VALUE)
+  public ResponseEntity<Response<Iterable<Bird>>> findBirds(@PathVariable("zoneCode") Long zoneCode, @PathVariable("name") String name) {
+    return ResponseEntity.ok(new Response<>(birdService.findByName(zoneCode, name), 200));
+  }
 
   @GetMapping(value = "/{birdId}", produces = MediaType.APPLICATION_JSON_VALUE)
   public ResponseEntity<Response<Optional<Bird>>> get(@PathVariable("birdId") Long birdId) {

@@ -15,8 +15,13 @@ export class BirdService{
         this.url = GLOBAL.url;
     }
 
-    getBirds(){
-        return this._http.get(this.url+'birds')
+    getBirds(zoneCode:number, nameBird:string){
+        let url = this.url+'birds/search/';
+        if(typeof nameBird == "undefined"){
+            return this._http.get( url+zoneCode)
+                .pipe(map(res => res.json()));
+        }
+        return this._http.get(url+zoneCode+'/'+nameBird)
             .pipe(map(res => res.json()));
     }
 
